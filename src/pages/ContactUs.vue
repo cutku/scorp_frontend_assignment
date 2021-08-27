@@ -55,12 +55,20 @@
           :options="options"
           @filter="filterFn"
           behavior="menu"
+          :rules="[
+            val =>
+              (val && val.id.length > 0) || this.pageLanguage.errorTypeSomething
+          ]"
         />
         <q-input
           :label="this.pageLanguage.textField"
           v-model="text"
           filled
           autogrow
+          :rules="[
+            val =>
+              (val && val.length > 0) || this.pageLanguage.errorTypeSomething
+          ]"
         />
         <template v-slot:prepend>
           <q-icon name="language" @click.stop />

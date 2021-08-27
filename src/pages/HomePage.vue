@@ -1,7 +1,9 @@
 <template>
   <q-page class="p-pa-lg">
     <h5 class="q-ma-xl">{{ this.pageLanguage.loremIpsumTitle }}</h5>
-    <p class="q-ma-xl">{{ this.pageLanguage.loremIpsumText }}</p></q-page
+    <p v-for="n in 15" :key="n" class="q-ma-xl">
+      {{ this.pageLanguage.loremIpsumText }}
+    </p></q-page
   >
 </template>
 
@@ -13,9 +15,9 @@ export default defineComponent({
   computed: {
     // ...mapGetters(["getEnLanguagePack", "trLanguagePack"]),
     ...mapState({
-      pageLanguage: (state) => state.language.pageLanguage,
-    }),
+      pageLanguage: state => state.language.pageLanguage
+    })
   },
-  name: "PageIndex",
+  name: "PageIndex"
 });
 </script>

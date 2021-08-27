@@ -16,9 +16,9 @@
           />
           <q-tab
             @click="loginModal = !loginModal"
-            name="person-login"
+            name="login-login"
             :label="pageLanguage.loginUpper"
-            icon="person"
+            icon="login"
           />
           <q-route-tab
             to="/contactus"
@@ -26,6 +26,36 @@
             :label="pageLanguage.contactUsUpper"
             icon="mail"
           />
+          <q-btn-dropdown
+            v-if="userData.username != ''"
+            auto-close
+            stretch
+            flat
+            style="min-width: 150px"
+          >
+            <template v-slot:label>
+              <div>
+                <div class="row justify-around items-center no-wrap">
+                  <q-icon name="person" />
+                </div>
+                <div class="row items-center no-wrap">
+                  {{ this.userData.username }}
+                </div>
+              </div>
+            </template>
+            <q-list>
+              <q-item>
+                <q-item-section
+                  >{{ pageLanguage.email }} : {{ userData.email }}
+                </q-item-section>
+                <q-icon name="mail" size="md" />
+              </q-item>
+              <q-item clickable @click="this.resetUser()" active active-class>
+                <q-item-section>{{ pageLanguage.logout }} </q-item-section>
+                <q-icon name="logout" size="md" />
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
           <q-btn-dropdown auto-close stretch flat style="min-width: 150px">
             <template v-slot:label>
               <div>
@@ -88,17 +118,119 @@
       class="bg-grey-1"
       side="right"
     >
-      <q-list>
-        <q-item-label header class="text-grey-8">
-          Essential Links
-        </q-item-label>
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list padding>
+          <q-item
+            :active="tab == 'home-homepage'"
+            clickable
+            v-ripple
+            @click="tabAction('home-homepage', '/')"
+          >
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section> {{ pageLanguage.homepage }} </q-item-section>
+          </q-item>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+          <q-item
+            v-if="userData.username == ''"
+            clickable
+            v-ripple
+            @click="loginModal = !loginModal"
+          >
+            <q-item-section avatar>
+              <q-icon name="login" />
+            </q-item-section>
+            <q-item-section> {{ pageLanguage.login }} </q-item-section>
+          </q-item>
+          <q-item
+            v-if="userData.username != ''"
+            clickable
+            v-ripple
+            @click="this.resetUser()"
+          >
+            <q-item-section avatar>
+              <q-icon name="logout" />
+            </q-item-section>
+            <q-item-section> {{ pageLanguage.logout }} </q-item-section>
+          </q-item>
+          <q-item
+            clickable
+            :active="tab == 'mail-contactUs'"
+            v-ripple
+            @click="tabAction('mail-contactUs', '/contactus')"
+          >
+            <q-item-section avatar>
+              <q-icon name="mail" />
+            </q-item-section>
+            <q-item-section> {{ pageLanguage.contactUs }} </q-item-section>
+          </q-item>
+          <q-btn-dropdown auto-close flat style="min-width: 150px">
+            <template v-slot:label>
+              <q-item-section avatar>
+                <q-icon name="language" />
+              </q-item-section>
+              <q-item-section>
+                {{ this.pageLanguage.languagesUpper }}
+              </q-item-section>
+            </template>
+            <!-- :active="this.$q.lang.getLocale().includes('en')" -->
+            <q-list>
+              <q-item
+                clickable
+                @click="this.setPageLanguage('en')"
+                :active="this.selectedLanguage == 'en'"
+                active-class="language-link"
+              >
+                <q-item-section>{{ this.pageLanguage.english }}</q-item-section>
+                <q-img
+                  src="../assets/en-flag-icon.png"
+                  spinner-color="white"
+                  style="height: 30px; max-width: 30px"
+                />
+              </q-item>
+
+              <q-item
+                clickable
+                @click="this.setPageLanguage('tr')"
+                :active="this.selectedLanguage == 'tr'"
+                active-class="language-link"
+              >
+                <q-item-section>{{ this.pageLanguage.turkish }}</q-item-section>
+                <q-img
+                  src="../assets/tr-flag-icon.png"
+                  spinner-color="white"
+                  style="height: 30px; max-width: 30px"
+                />
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </q-list>
+      </q-scroll-area>
+
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+          </q-avatar>
+          <div v-if="userData.username != ''" class="text-weight-bold">
+            {{ pageLanguage.username }}: {{ userData.username }}
+          </div>
+          <div v-if="userData.username != ''">
+            {{ pageLanguage.email }} : {{ userData.email }}
+          </div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
@@ -107,12 +239,10 @@
 
     <q-footer elevated class="bg-grey-8 text-white">
       <q-toolbar>
-        <q-toolbar-title>
-          <div>
-            Should exists on all pages. What is included in the footer does not
-            matter.
-          </div>
-        </q-toolbar-title>
+        <div>
+          Should exists on all pages. What is included in the footer does not
+          matter.
+        </div>
       </q-toolbar>
     </q-footer>
   </q-layout>
@@ -237,53 +367,50 @@
   background: #1976D2
 </style>
 <script>
-const linksList = [
-  {
-    title: "Homepage",
-    // caption: "quasar.dev",
-    icon: "home",
-    to: "/"
-  },
-  {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework"
-  },
-  {
-    title: "Discord Chat Channel",
-    caption: "chat.quasar.dev",
-    icon: "chat",
-    link: "https://chat.quasar.dev"
-  }
-];
-
-import EssentialLink from "components/EssentialLink.vue";
 import { defineComponent, ref } from "vue";
-import { mapActions, mapGetters, useStore, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import { useQuasar } from "quasar";
+
 export default defineComponent({
   name: "MainLayout",
-  components: {
-    EssentialLink
-  },
+  components: {},
   computed: {
-    // ...mapGetters(["getEnLanguagePack", "trLanguagePack"]),
     ...mapState({
       pageLanguage: state => state.language.pageLanguage,
-      selectedLanguage: state => state.language.selectedLanguage
+      selectedLanguage: state => state.language.selectedLanguage,
+      userData: state => state.user.user
     })
   },
   methods: {
-    ...mapActions(["setPageLanguage", "setUser"]),
+    ...mapActions(["setPageLanguage", "setUser", "resetUser"]),
     onClose() {
       (this.username = ""),
         (this.email = ""),
         (this.password = ""),
         (this.loginModal = false);
     },
+    tabAction(ref, path) {
+      // code
+      this.tab = ref;
+      this.$router.push(path);
+    },
     onLogin() {
-      if (this.username == "" && this.email == "" && this.password == "") {
+      if (
+        this.userData.username != "" ||
+        this.userData.email != "" ||
+        this.userData.password != ""
+      ) {
+        this.$q.notify({
+          color: "negative",
+          position: "top",
+          message: this.pageLanguage.loggedAccountErrorMessage,
+          icon: "report_problem"
+        });
+      } else if (
+        this.username == "" ||
+        this.email == "" ||
+        this.password == ""
+      ) {
         this.$q.notify({
           color: "negative",
           position: "top",
@@ -321,16 +448,13 @@ export default defineComponent({
       email: "",
       password: "",
       locale: "",
-      isPwd: true
-      // pageLanguage: this.$store.state.language.enLanguagePack,
-      // loginModal: this.$q.localStorage.getItem('loginModal')
+      isPwd: true,
+      tab: ref("home-homepage")
     };
   },
   setup() {
     const rightDrawerOpen = ref(false);
     return {
-      tab: ref("home-homepage"),
-      essentialLinks: linksList,
       rightDrawerOpen,
       toggleRightDrawer() {
         rightDrawerOpen.value = !rightDrawerOpen.value;

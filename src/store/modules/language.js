@@ -20,6 +20,8 @@ const langPacktEn = {
   phoneNumber: "Phone Number",
   countrySelector: "Country",
   textField: "Text Field",
+  logout: "Logout",
+  loggedAccountErrorMessage: "Please logout",
   loginPostErrorMessage: "Please fix errors",
   loremIpsumText:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. An entire football is soft, it is time to stress in tomato sauce. So, dear great, convallis sit amet porttitor ac, always, or more than. Bullet now or malesuada price. Eu lorem velit vulputate gravida commodo amet consectetuer consectetuer lacus risus. But sometimes sometimes vehicles. Until the lorem, enhanced and now but, a lot of outdoor deductible. Unfortunately, the price of soft blockage. Gluten. Reserved soccer ecological deductible eu vulputate. Who want to live, ultricies graduated. Moors, or peanut itself.",
@@ -45,6 +47,7 @@ const langPacktTr = {
   password: "Şifre",
   email: "Email",
   login: "Oturum Aç",
+  logout: "Çıkış",
   loginUpper: "OTURUM AÇ",
   contactUs: "İletişim",
   contactUsUpper: "İLETİŞİM",
@@ -57,6 +60,7 @@ const langPacktTr = {
   phoneNumber: "Telefon Numarası",
   textField: "Metin Alanı",
   countrySelector: "Ülke",
+  loggedAccountErrorMessage: "Lüften çıkış yapınız",
   loremIpsumTitle:
     "1 paragraf, 71 sözcük, 504 karakter Lorem Ipsum üretilmiştir",
   loremIpsumText:
