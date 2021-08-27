@@ -89,9 +89,15 @@
       side="right"
     >
       <q-list>
-        <q-item-label header class="text-grey-8"> Essential Links </q-item-label>
+        <q-item-label header class="text-grey-8">
+          Essential Links
+        </q-item-label>
 
-        <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+        <EssentialLink
+          v-for="link in essentialLinks"
+          :key="link.title"
+          v-bind="link"
+        />
       </q-list>
     </q-drawer>
 
@@ -103,7 +109,8 @@
       <q-toolbar>
         <q-toolbar-title>
           <div>
-            Should exists on all pages. What is included in the footer does not matter.
+            Should exists on all pages. What is included in the footer does not
+            matter.
           </div>
         </q-toolbar-title>
       </q-toolbar>
@@ -124,7 +131,9 @@
               :label="this.pageLanguage.username"
               hint=""
               lazy-rules
-              :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+              :rules="[
+                val => (val && val.length > 0) || 'Please type something'
+              ]"
             />
             <q-input
               outlined
@@ -132,7 +141,9 @@
               :label="pageLanguage.email"
               hint=""
               lazy-rules
-              :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+              :rules="[
+                val => (val && val.length > 0) || 'Please type something'
+              ]"
             />
             <q-input
               outlined
@@ -141,13 +152,13 @@
               :label="pageLanguage.password"
               lazy-rules
               :rules="[
-                (val) => (val !== null && val !== '') || 'Please type your password',
+                val =>
+                  (val !== null && val !== '') || 'Please type your password'
               ]"
             >
               <template v-slot:append>
                 <q-icon
                   :name="isPwd ? 'visibility_off' : 'visibility'"
-                  class="cursor-pointer"
                   @click="isPwd = !isPwd"
                 />
               </template>
@@ -156,7 +167,12 @@
               <q-icon name="language" @click.stop />
             </template>
             <div>
-              <q-btn label="Login" type="login" color="primary" @click="this.onLogin" />
+              <q-btn
+                label="Login"
+                type="login"
+                color="primary"
+                @click="this.onLogin"
+              />
               <q-btn
                 label="Close"
                 @click="this.onClose"
@@ -225,62 +241,38 @@ const linksList = [
   {
     title: "Homepage",
     // caption: "quasar.dev",
-    icon: "school",
-    link: "https://quasar.dev",
+    icon: "home",
+    to: "/"
   },
   {
     title: "Github",
     caption: "github.com/quasarframework",
     icon: "code",
-    link: "https://github.com/quasarframework",
+    link: "https://github.com/quasarframework"
   },
   {
     title: "Discord Chat Channel",
     caption: "chat.quasar.dev",
     icon: "chat",
-    link: "https://chat.quasar.dev",
-  },
-  {
-    title: "Forum",
-    caption: "forum.quasar.dev",
-    icon: "record_voice_over",
-    link: "https://forum.quasar.dev",
-  },
-  {
-    title: "Twitter",
-    caption: "@quasarframework",
-    icon: "rss_feed",
-    link: "https://twitter.quasar.dev",
-  },
-  {
-    title: "Facebook",
-    caption: "@QuasarFramework",
-    icon: "public",
-    link: "https://facebook.quasar.dev",
-  },
-  {
-    title: "Quasar Awesome",
-    caption: "Community Quasar projects",
-    icon: "favorite",
-    link: "https://awesome.quasar.dev",
-  },
+    link: "https://chat.quasar.dev"
+  }
 ];
 
 import EssentialLink from "components/EssentialLink.vue";
 import { defineComponent, ref } from "vue";
 import { mapActions, mapGetters, useStore, mapState } from "vuex";
-import { useQuasar, Notify } from "quasar";
+import { useQuasar } from "quasar";
 export default defineComponent({
   name: "MainLayout",
   components: {
-    EssentialLink,
+    EssentialLink
   },
   computed: {
     // ...mapGetters(["getEnLanguagePack", "trLanguagePack"]),
     ...mapState({
-      pageLanguage: (state) => state.language.pageLanguage,
-      selectedLanguage: (state) => state.language.selectedLanguage,
-    }),
+      pageLanguage: state => state.language.pageLanguage,
+      selectedLanguage: state => state.language.selectedLanguage
+    })
   },
   methods: {
     ...mapActions(["setPageLanguage", "setUser"]),
@@ -296,17 +288,23 @@ export default defineComponent({
           color: "negative",
           position: "top",
           message: this.pageLanguage.loginErrorMessage,
-          icon: "report_problem",
+          icon: "report_problem"
         });
       } else {
-        this.setUser( {
+        this.setUser({
           username: this.username,
           email: this.email,
-          password: this.password,
+          password: this.password
         });
         this.loginModal = false;
+        this.$q.notify({
+          color: "positive",
+          position: "top",
+          message: this.pageLanguage.loginConfirmMessage,
+          icon: "check"
+        });
       }
-    },
+    }
   },
   mounted() {
     if (this.$q.lang.getLocale().includes("en")) {
@@ -323,7 +321,7 @@ export default defineComponent({
       email: "",
       password: "",
       locale: "",
-      isPwd: true,
+      isPwd: true
       // pageLanguage: this.$store.state.language.enLanguagePack,
       // loginModal: this.$q.localStorage.getItem('loginModal')
     };
@@ -336,8 +334,8 @@ export default defineComponent({
       rightDrawerOpen,
       toggleRightDrawer() {
         rightDrawerOpen.value = !rightDrawerOpen.value;
-      },
+      }
     };
-  },
+  }
 });
 </script>
