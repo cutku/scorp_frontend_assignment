@@ -93,7 +93,7 @@
   float: right;
 }
 .q-btn {
-  min-width: 150px;
+  min-width: 9.375rem;
 }
 </style>
 <script>

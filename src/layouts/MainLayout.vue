@@ -31,7 +31,7 @@
             auto-close
             stretch
             flat
-            style="min-width: 150px"
+            style="min-width: 9.375rem"
           >
             <template v-slot:label>
               <div>
@@ -56,7 +56,7 @@
               </q-item>
             </q-list>
           </q-btn-dropdown>
-          <q-btn-dropdown auto-close stretch flat style="min-width: 150px">
+          <q-btn-dropdown auto-close stretch flat style="min-width: 9.375rem">
             <template v-slot:label>
               <div>
                 <div class="row justify-around items-center no-wrap">
@@ -79,7 +79,7 @@
                 <q-img
                   src="../assets/en-flag-icon.png"
                   spinner-color="white"
-                  style="height: 30px; max-width: 30px"
+                  style="height: 1.875rem; max-width: 1.875rem"
                 />
               </q-item>
 
@@ -93,7 +93,7 @@
                 <q-img
                   src="../assets/tr-flag-icon.png"
                   spinner-color="white"
-                  style="height: 30px; max-width: 30px"
+                  style="height: 1.875rem; max-width: 1.875rem"
                 />
               </q-item>
             </q-list>
@@ -120,9 +120,9 @@
     >
       <q-scroll-area
         style="
-          height: calc(100% - 150px);
-          margin-top: 150px;
-          border-right: 1px solid #ddd;
+          height: calc(100% - 9.375rem);
+          margin-top: 9.375rem;
+          border-right: 0.063rem solid #ddd;
         "
       >
         <q-list padding>
@@ -171,7 +171,7 @@
             </q-item-section>
             <q-item-section> {{ pageLanguage.contactUs }} </q-item-section>
           </q-item>
-          <q-btn-dropdown auto-close flat style="min-width: 150px">
+          <q-btn-dropdown auto-close flat style="min-width: 9.375rem">
             <template v-slot:label>
               <q-item-section avatar>
                 <q-icon name="language" />
@@ -192,7 +192,7 @@
                 <q-img
                   src="../assets/en-flag-icon.png"
                   spinner-color="white"
-                  style="height: 30px; max-width: 30px"
+                  style="height: 1.875rem; max-width: 1.875rem"
                 />
               </q-item>
 
@@ -206,7 +206,7 @@
                 <q-img
                   src="../assets/tr-flag-icon.png"
                   spinner-color="white"
-                  style="height: 30px; max-width: 30px"
+                  style="height: 1.875rem; max-width: 1.875rem"
                 />
               </q-item>
             </q-list>
@@ -217,10 +217,10 @@
       <q-img
         class="absolute-top"
         src="https://cdn.quasar.dev/img/material.png"
-        style="height: 150px"
+        style="height: 9.375rem"
       >
         <div class="absolute-bottom bg-transparent">
-          <q-avatar size="56px" class="q-mb-sm">
+          <q-avatar size="3.5rem" class="q-mb-sm">
             <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
           </q-avatar>
           <div v-if="userData.username != ''" class="text-weight-bold">
@@ -248,7 +248,7 @@
   </q-layout>
 
   <q-dialog v-model="loginModal" color="white" persistent>
-    <div style="min-width: 340px">
+    <div style="min-width: 21.25rem">
       <q-card class="login-card" flat bordered>
         <q-card-section class="text-center">
           <q-form class="q-gutter-md q-pa-md">
@@ -314,7 +314,7 @@
             </div>
           </q-form>
         </q-card-section>
-        <q-btn-dropdown auto-close stretch flat style="min-width: 150px">
+        <q-btn-dropdown auto-close stretch flat style="min-width: 9.375rem">
           <template v-slot:label>
             <div>
               <div class="row justify-around items-center no-wrap">
@@ -337,7 +337,7 @@
               <q-img
                 src="../assets/en-flag-icon.png"
                 spinner-color="white"
-                style="height: 30px; max-width: 30px"
+                style="height: 1.875rem; max-width: 1.875rem"
               />
             </q-item>
 
@@ -351,7 +351,7 @@
               <q-img
                 src="../assets/tr-flag-icon.png"
                 spinner-color="white"
-                style="height: 30px; max-width: 30px"
+                style="height: 1.875rem; max-width: 1.875rem"
               />
             </q-item>
           </q-list>
