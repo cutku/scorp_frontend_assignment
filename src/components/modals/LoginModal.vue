@@ -53,13 +53,13 @@
             </template>
             <div>
               <q-btn
-                label="Login"
+                :label="pageLanguage.login"
                 type="login"
                 color="primary"
                 @click="onLogin"
               />
               <q-btn
-                label="Close"
+                :label="pageLanguage.close"
                 @click="onClose"
                 type="reset"
                 color="primary"

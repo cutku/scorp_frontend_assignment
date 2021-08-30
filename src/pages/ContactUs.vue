@@ -71,7 +71,7 @@
         <div class="right">
           <q-btn
             class="allign-right"
-            label="Send"
+            :label="pageLanguage.send"
             type="login"
             color="primary"
             icon-right="send"

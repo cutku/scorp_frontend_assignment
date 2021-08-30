@@ -1,4 +1,5 @@
 const langPacktEn = {
+  send: "Send",
   english: "English",
   turkish: "Turkish",
   languagesUpper: "LANGUAGES",
@@ -7,6 +8,7 @@ const langPacktEn = {
   login: "Login",
   loginUpper: "LOGIN",
   logout: "Logout",
+  close: "Close",
   username: "Name",
   password: "Password",
   email: "Email",
@@ -41,6 +43,7 @@ const langPacktEn = {
   ]
 };
 const langPacktTr = {
+  send: "Gönder",
   english: "İngilizce",
   turkish: "Türkçe",
   languagesUpper: "DİLLER",
@@ -51,7 +54,8 @@ const langPacktTr = {
   logout: "Çıkış",
   username: "İsim",
   password: "Şifre",
-  email: "Email",
+  email: "e-posta",
+  close: "Kapat",
   contactUs: "İletişim",
   contactUsUpper: "İLETİŞİM",
   loginErrorMessage: "Lütfen boşlukları doldurun.",
