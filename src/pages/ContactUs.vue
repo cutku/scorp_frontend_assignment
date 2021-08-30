@@ -3,17 +3,16 @@
     <div style="min-width: 60%">
       <q-form @submit.prevent class="q-gutter-md q-pa-md">
         <h5 class="q-ma-xl">
-          <q-icon size="md" name="mail" /> {{ this.pageLanguage.contactUs }}
+          <q-icon size="md" name="mail" /> {{ pageLanguage.contactUs }}
         </h5>
         <q-input
           outlined
           v-model="username"
-          :label="this.pageLanguage.username"
+          :label="pageLanguage.username"
           hint=""
           lazy-rules
           :rules="[
-            val =>
-              (val && val.length > 0) || this.pageLanguage.errorTypeSomething
+            val => (val && val.length > 0) || pageLanguage.errorTypeSomething
           ]"
         />
         <q-input
@@ -25,9 +24,8 @@
           lazy-rules
           border
           :rules="[
-            val =>
-              (val && val.length > 0) || this.pageLanguage.errorTypeSomething,
-            val => validateEmail(val) || this.pageLanguage.errorTypeMail
+            val => (val && val.length > 0) || pageLanguage.errorTypeSomething,
+            val => validateEmail(val) || pageLanguage.errorTypeMail
           ]"
         >
         </q-input>
@@ -35,13 +33,12 @@
           outlined
           :bg-color="validatePhoneNumber(phoneNumber) ? 'green-5' : 'red-5'"
           v-model="phoneNumber"
-          :label="this.pageLanguage.phoneNumber"
+          :label="pageLanguage.phoneNumber"
           hint=""
           lazy-rules
           :rules="[
-            val =>
-              (val && val.length > 0) || this.pageLanguage.errorTypeSomething,
-            val => validatePhoneNumber(val) || this.pageLanguage.errorTypePhone
+            val => (val && val.length > 0) || pageLanguage.errorTypeSomething,
+            val => validatePhoneNumber(val) || pageLanguage.errorTypePhone
           ]"
         />
         <q-select
@@ -49,25 +46,23 @@
           v-model="countrySelection"
           use-input
           input-debounce="0"
-          :label="this.pageLanguage.countrySelector"
+          :label="pageLanguage.countrySelector"
           option-value="id"
           option-label="name"
           :options="options"
           @filter="filterFn"
           behavior="menu"
           :rules="[
-            val =>
-              (val && val.id.length > 0) || this.pageLanguage.errorTypeSomething
+            val => (val && val.id.length > 0) || pageLanguage.errorTypeSomething
           ]"
         />
         <q-input
-          :label="this.pageLanguage.textField"
+          :label="pageLanguage.textField"
           v-model="text"
           filled
           autogrow
           :rules="[
-            val =>
-              (val && val.length > 0) || this.pageLanguage.errorTypeSomething
+            val => (val && val.length > 0) || pageLanguage.errorTypeSomething
           ]"
         />
         <template v-slot:prepend>

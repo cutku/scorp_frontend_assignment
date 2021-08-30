@@ -5,18 +5,17 @@
         <q-card-section class="text-center">
           <q-form @submit.prevent class="q-gutter-md q-pa-md">
             <h5 class="q-ma-xl">
-              <q-icon size="md" name="person" /> {{ this.pageLanguage.login }}
+              <q-icon size="md" name="person" /> {{ pageLanguage.login }}
             </h5>
             <q-input
               outlined
               v-model="username"
-              :label="this.pageLanguage.username"
+              :label="pageLanguage.username"
               hint=""
               lazy-rules
               :rules="[
                 val =>
-                  (val && val.length > 0) ||
-                  this.pageLanguage.errorTypeSomething
+                  (val && val.length > 0) || pageLanguage.errorTypeSomething
               ]"
             />
             <q-input
@@ -27,8 +26,7 @@
               lazy-rules
               :rules="[
                 val =>
-                  (val && val.length > 0) ||
-                  this.pageLanguage.errorTypeSomething
+                  (val && val.length > 0) || pageLanguage.errorTypeSomething
               ]"
             />
             <q-input
@@ -40,7 +38,7 @@
               :rules="[
                 val =>
                   (val !== null && val !== '') ||
-                  this.pageLanguage.errorTypeSomething
+                  pageLanguage.errorTypeSomething
               ]"
             >
               <template v-slot:append>
@@ -78,19 +76,18 @@
                 <q-icon name="language" />
               </div>
               <div class="row items-center no-wrap">
-                {{ this.pageLanguage.languagesUpper }}
+                {{ pageLanguage.languagesUpper }}
               </div>
             </div>
           </template>
-          <!-- :active="this.$q.lang.getLocale().includes('en')" -->
           <q-list>
             <q-item
               clickable
-              @click="this.setPageLanguage('en')"
-              :active="this.selectedLanguage == 'en'"
+              @click="setPageLanguage('en')"
+              :active="selectedLanguage == 'en'"
               active-class="language-link"
             >
-              <q-item-section>{{ this.pageLanguage.english }}</q-item-section>
+              <q-item-section>{{ pageLanguage.english }}</q-item-section>
               <q-img
                 src="../../assets/en-flag-icon.png"
                 spinner-color="white"
@@ -100,11 +97,11 @@
 
             <q-item
               clickable
-              @click="this.setPageLanguage('tr')"
-              :active="this.selectedLanguage == 'tr'"
+              @click="setPageLanguage('tr')"
+              :active="selectedLanguage == 'tr'"
               active-class="language-link"
             >
-              <q-item-section>{{ this.pageLanguage.turkish }}</q-item-section>
+              <q-item-section>{{ pageLanguage.turkish }}</q-item-section>
               <q-img
                 src="../../assets/tr-flag-icon.png"
                 spinner-color="white"

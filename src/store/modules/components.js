@@ -1,7 +1,8 @@
 export default {
   state: {
     loginModal: false,
-    rightDrawer: false
+    rightDrawer: false,
+    tab: "home-homepage"
   },
   mutations: {
     setLoginModal(state) {
@@ -9,6 +10,9 @@ export default {
     },
     setRightDrawer(state, data) {
       state.rightDrawer = data;
+    },
+    setTab(state, data) {
+      state.tab = data;
     }
   },
   actions: {
@@ -17,6 +21,9 @@ export default {
     },
     setRightDrawer({ commit }, data) {
       commit("setRightDrawer", data);
+    },
+    setTab({ commit }, data) {
+      commit("setTab", data);
     }
   }
 };

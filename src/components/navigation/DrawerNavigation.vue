@@ -1,6 +1,6 @@
 <template>
   <q-drawer
-    v-if="this.$q.platform.is.mobile"
+    v-if="$q.platform.is.mobile"
     v-model="rightDrawerAction"
     show-if-above
     bordered
@@ -42,7 +42,7 @@
           v-if="userData.username != ''"
           clickable
           v-ripple
-          @click="this.resetUser()"
+          @click="resetUser()"
         >
           <q-item-section avatar>
             <q-icon name="logout" />
@@ -66,18 +66,17 @@
               <q-icon name="language" />
             </q-item-section>
             <q-item-section>
-              {{ this.pageLanguage.languagesUpper }}
+              {{ pageLanguage.languagesUpper }}
             </q-item-section>
           </template>
-          <!-- :active="this.$q.lang.getLocale().includes('en')" -->
           <q-list>
             <q-item
               clickable
-              @click="this.setPageLanguage('en')"
-              :active="this.selectedLanguage == 'en'"
+              @click="setPageLanguage('en')"
+              :active="selectedLanguage == 'en'"
               active-class="language-link"
             >
-              <q-item-section>{{ this.pageLanguage.english }}</q-item-section>
+              <q-item-section>{{ pageLanguage.english }}</q-item-section>
               <q-img
                 src="../../assets/en-flag-icon.png"
                 spinner-color="white"
@@ -87,11 +86,11 @@
 
             <q-item
               clickable
-              @click="this.setPageLanguage('tr')"
-              :active="this.selectedLanguage == 'tr'"
+              @click="setPageLanguage('tr')"
+              :active="selectedLanguage == 'tr'"
               active-class="language-link"
             >
-              <q-item-section>{{ this.pageLanguage.turkish }}</q-item-section>
+              <q-item-section>{{ pageLanguage.turkish }}</q-item-section>
               <q-img
                 src="../../assets/tr-flag-icon.png"
                 spinner-color="white"
@@ -143,10 +142,11 @@ export default defineComponent({
       "setUser",
       "resetUser",
       "setLoginModal",
-      "setRightDrawer"
+      "setRightDrawer",
+      "setTab"
     ]),
     tabAction(ref, path) {
-      this.tab = ref;
+      this.setTab(ref);
       this.$router.push(path);
     }
   },
@@ -155,12 +155,12 @@ export default defineComponent({
       pageLanguage: state => state.language.pageLanguage,
       selectedLanguage: state => state.language.selectedLanguage,
       userData: state => state.user.user,
-      rightDrawer: state => state.components.rightDrawer
+      rightDrawer: state => state.components.rightDrawer,
+      tab: state => state.components.tab
     })
   },
   data() {
     return {
-      tab: ref("home-homepage"),
       rightDrawerAction: false
     };
   }
