@@ -1,6 +1,5 @@
 # scorp_app (scorp_frontend)
-
-A Quasar Framework app
+[Live](https://scorp-frontend-assigment.vercel.app/#/)
 
 ## Install the dependencies
 
