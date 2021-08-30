@@ -3,7 +3,11 @@
     <HeaderNavigation />
     <DrawerNavigation />
     <Footer />
-    <q-page-container>
+    <q-page-container
+      v-bind:style="
+        $q.platform.is.desktop ? 'marginBottom: 1rem;' : 'marginBottom: 2rem;'
+      "
+    >
       <router-view />
     </q-page-container>
   </q-layout>
