@@ -3,7 +3,7 @@
     <div style="min-width: 21.25rem">
       <q-card class="login-card" flat bordered>
         <q-card-section class="text-center">
-          <q-form class="q-gutter-md q-pa-md">
+          <q-form @submit.prevent class="q-gutter-md q-pa-md">
             <h5 class="q-ma-xl">
               <q-icon size="md" name="person" /> {{ this.pageLanguage.login }}
             </h5>
@@ -125,7 +125,7 @@ import { mapState, mapActions } from "vuex";
 export default defineComponent({
   name: "LoginModal",
   methods: {
-    ...mapActions(["setPageLanguage", "setUser", "resetUser", "setLoginModal"]),
+    ...mapActions(["setPageLanguage", "setUser", "setLoginModal"]),
     onClose() {
       (this.username = ""),
         (this.email = ""),
@@ -169,10 +169,6 @@ export default defineComponent({
           icon: "check"
         });
       }
-    },
-    tabAction(ref, path) {
-      this.tab = ref;
-      this.$router.push(path);
     }
   },
   computed: {
