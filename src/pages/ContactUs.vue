@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <div style="min-width: 60%">
-      <q-form class="q-gutter-md q-pa-md">
+      <q-form @submit.prevent class="q-gutter-md q-pa-md">
         <h5 class="q-ma-xl">
           <q-icon size="md" name="mail" /> {{ this.pageLanguage.contactUs }}
         </h5>
