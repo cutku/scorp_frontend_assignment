@@ -41,7 +41,7 @@
           :rules="[
             val =>
               (val && val.length > 0) || this.pageLanguage.errorTypeSomething,
-            val => validatePhoneNumber(val) || this.pageLanguage.phoneNumber
+            val => validatePhoneNumber(val) || this.pageLanguage.errorTypePhone
           ]"
         />
         <q-select

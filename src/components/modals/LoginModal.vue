@@ -14,7 +14,9 @@
               hint=""
               lazy-rules
               :rules="[
-                val => (val && val.length > 0) || 'Please type something'
+                val =>
+                  (val && val.length > 0) ||
+                  this.pageLanguage.errorTypeSomething
               ]"
             />
             <q-input
@@ -24,7 +26,9 @@
               hint=""
               lazy-rules
               :rules="[
-                val => (val && val.length > 0) || 'Please type something'
+                val =>
+                  (val && val.length > 0) ||
+                  this.pageLanguage.errorTypeSomething
               ]"
             />
             <q-input
@@ -35,7 +39,8 @@
               lazy-rules
               :rules="[
                 val =>
-                  (val !== null && val !== '') || 'Please type your password'
+                  (val !== null && val !== '') ||
+                  this.pageLanguage.errorTypeSomething
               ]"
             >
               <template v-slot:append>
