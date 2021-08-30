@@ -10,11 +10,6 @@
   <LoginModal :LoginModal="loginModal" />
 </template>
 
-<style lang="sass">
-.language-link
-  color: white
-  background: #1976D2
-</style>
 <script>
 import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
@@ -46,7 +41,7 @@ export default defineComponent({
   },
   data() {
     return {
-      quas: useQuasar(),
+      quasar: useQuasar(),
       loginModal: false,
       username: "",
       email: "",

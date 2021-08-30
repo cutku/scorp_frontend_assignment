@@ -116,11 +116,10 @@ import { defineComponent, ref } from "vue";
 import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
-  props: {},
+  name: "HeaderNavigation",
   methods: {
     ...mapActions([
       "setPageLanguage",
-      "setUser",
       "resetUser",
       "setLoginModal",
       "setRightDrawer"
@@ -134,7 +133,6 @@ export default defineComponent({
       rightDrawer: state => state.components.rightDrawer
     })
   },
-  watch: {},
   data() {
     return {
       tab: ref("home-homepage")
@@ -142,3 +140,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="sass">
+.language-link
+  color: white
+  background: #1976D2
+</style>

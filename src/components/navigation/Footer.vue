@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import { mapState, mapActions } from "vuex";
+import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
+  name: "Footer",
   computed: {
     ...mapState({
       pageLanguage: state => state.language.pageLanguage

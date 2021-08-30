@@ -118,7 +118,7 @@ import { defineComponent } from "vue";
 import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
-  watch: {},
+  name: "LoginModal",
   methods: {
     ...mapActions(["setPageLanguage", "setUser", "resetUser", "setLoginModal"]),
     onClose() {
@@ -189,3 +189,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="sass">
+.language-link
+  color: white
+  background: #1976D2
+</style>

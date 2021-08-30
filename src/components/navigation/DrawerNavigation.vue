@@ -124,12 +124,11 @@
 </template>
 
 <script>
-import { boot } from "quasar/wrappers";
 import { defineComponent, ref } from "vue";
 import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
-  props: {},
+  name: "DrawerNavigation",
   watch: {
     rightDrawer: function() {
       this.rightDrawerAction = this.rightDrawer;
@@ -167,3 +166,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="sass">
+.language-link
+  color: white
+  background: #1976D2
+</style>

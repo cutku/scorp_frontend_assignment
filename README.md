@@ -11,7 +11,7 @@ npm install
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
 ```bash
-quasar dev
+npm run dev
 ```
 
 ### Lint the files
@@ -23,13 +23,7 @@ npm run lint
 ### Build the app for production
 
 ```bash
-quasar build
-```
-
-### Dockerize the app
-
-```bash
-docker build -t scorop_frontend .
+npm run build
 ```
 
 ### Description of the app
