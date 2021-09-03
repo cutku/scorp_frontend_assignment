@@ -1,6 +1,8 @@
 <template>
+  <q-page-sticky position="top-right" :offset="[18, 18]">
+    <q-btn @click="toggleDrawer" round color="primary" icon="menu" />
+  </q-page-sticky>
   <q-drawer
-    v-if="$q.platform.is.mobile"
     v-model="rightDrawerAction"
     show-if-above
     bordered
@@ -9,10 +11,10 @@
   >
     <q-scroll-area
       style="
-          height: calc(100% - 9.375rem);
-          margin-top: 9.375rem;
-          border-right: 0.063rem solid #ddd;
-        "
+        height: calc(100% - 9.375rem);
+        margin-top: 9.375rem;
+        border-right: 0.063rem solid #ddd;
+      "
     >
       <q-list padding>
         <q-item
@@ -127,7 +129,7 @@ import { defineComponent, ref } from "vue";
 import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
-  name: "DrawerNavigation",
+  name: "MobidleNavigation",
   watch: {
     rightDrawer: function() {
       this.rightDrawerAction = this.rightDrawer;
@@ -148,6 +150,9 @@ export default defineComponent({
     tabAction(ref, path) {
       this.setTab(ref);
       this.$router.push(path);
+    },
+    toggleDrawer() {
+      this.rightDrawerAction = !this.rightDrawerAction;
     }
   },
   computed: {

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="fixed-center">
     <div style="min-width: 60%">
       <q-form @submit.prevent class="q-gutter-md q-pa-md">
         <h5 class="q-ma-xl">
@@ -87,7 +87,7 @@
 .right {
   float: right;
 }
-.q-btn {
+div.q-btn {
   min-width: 9.375rem;
 }
 </style>

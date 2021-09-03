@@ -3,8 +3,8 @@
     <div style="min-width: 21.25rem">
       <q-card class="login-card" flat bordered>
         <q-card-section class="text-center">
-          <q-form @submit.prevent class="q-gutter-md q-pa-md">
-            <h5 class="q-ma-xl">
+          <q-form @submit.prevent class="q-gutter-ms q-pd-md">
+            <h5 class="q-ma-md">
               <q-icon size="md" name="person" /> {{ pageLanguage.login }}
             </h5>
             <q-input

@@ -1,7 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <HeaderNavigation />
-    <DrawerNavigation />
+  <q-layout view="lHr LpR fFf">
+    <MobileNavigation v-if="$q.platform.is.mobile" />
+    <LeftBarNavigation />
+    <RightBarNavigation v-if="$q.platform.is.desktop" />
     <Footer />
     <q-page-container
       v-bind:style="
@@ -19,13 +20,20 @@ import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
 import { useQuasar } from "quasar";
 import HeaderNavigation from "../components/navigation/HeaderNavigation.vue";
-import DrawerNavigation from "../components/navigation/DrawerNavigation.vue";
+import MobileNavigation from "../components/navigation/MobileNavigation.vue";
 import Footer from "../components/navigation/Footer.vue";
 import LoginModal from "../components/modals/LoginModal.vue";
-
+import LeftBarNavigation from "../components/navigation/LeftBarNavigation.vue";
+import RightBarNavigation from "../components/navigation/RightBarNavigation.vue";
 export default defineComponent({
   name: "MainLayout",
-  components: { HeaderNavigation, DrawerNavigation, LoginModal, Footer },
+  components: {
+    MobileNavigation,
+    LoginModal,
+    Footer,
+    LeftBarNavigation,
+    RightBarNavigation
+  },
   computed: {
     ...mapState({
       pageLanguage: state => state.language.pageLanguage,
