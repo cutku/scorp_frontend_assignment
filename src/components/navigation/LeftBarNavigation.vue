@@ -1,5 +1,9 @@
 <template>
-  <q-page-sticky position="top-left" :offset="[5, 5]">
+  <q-page-sticky
+    position="top-left"
+    :offset="[5, 5]"
+    v-if="$q.platform.is.desktop"
+  >
     <h6 class="vericaltext">
       <div v-if="tab.split('-')[0] != 'home'">
         <q-icon size="ms" :name="tab.split('-')[0]" />
@@ -9,6 +13,21 @@
         <q-icon size="ms" :name="tab.split('-')[0]" />Scorp•App
       </div>
     </h6>
+  </q-page-sticky>
+  <q-page-sticky
+    position="top-left"
+    :offset="[0, 0]"
+    v-if="$q.platform.is.mobile"
+  >
+    <div class="vericaltext">
+      <div v-if="tab.split('-')[0] != 'home'">
+        <q-icon size="xs" :name="tab.split('-')[0]" />
+        {{ pageLanguage[tab.split("-")[1]] }}
+      </div>
+      <div v-if="tab.split('-')[0] == 'home'">
+        <q-icon size="xs" :name="tab.split('-')[0]" />Scorp•App
+      </div>
+    </div>
   </q-page-sticky>
 </template>
 <script>

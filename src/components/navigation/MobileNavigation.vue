@@ -3,6 +3,7 @@
     v-model="rightDrawerAction"
     show-if-above
     bordered
+    :width="170"
     class="bg-grey-1"
     side="right"
   >

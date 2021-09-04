@@ -145,7 +145,7 @@ export default defineComponent({
           .catch(error => {
             this.$q.notify({
               color: "negative",
-              position: "top",
+              position: "top-left",
               message: this.pageLanguage.postError + ": " + error,
               icon: "report_problem"
             });
@@ -153,7 +153,7 @@ export default defineComponent({
       } else {
         this.$q.notify({
           color: "negative",
-          position: "top",
+          position: "top-left",
           message: this.pageLanguage.loginPostErrorMessage,
           icon: "report_problem"
         });

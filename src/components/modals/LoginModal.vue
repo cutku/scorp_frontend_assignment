@@ -1,6 +1,6 @@
 <template>
   <q-dialog v-model="loginModal" color="white" persistent>
-    <div style="min-width: 21.25rem">
+    <div style="min-width: 16.25rem">
       <q-card class="login-card" flat bordered>
         <q-card-section class="text-center">
           <q-form @submit.prevent class="q-gutter-ms q-pd-md">
@@ -137,7 +137,7 @@ export default defineComponent({
       ) {
         this.$q.notify({
           color: "negative",
-          position: "top",
+          position: "top-left",
           message: this.pageLanguage.loggedAccountErrorMessage,
           icon: "report_problem"
         });
@@ -148,7 +148,7 @@ export default defineComponent({
       ) {
         this.$q.notify({
           color: "negative",
-          position: "top",
+          position: "top-left",
           message: this.pageLanguage.loginErrorMessage,
           icon: "report_problem"
         });
@@ -161,7 +161,8 @@ export default defineComponent({
         this.setLoginModal();
         this.$q.notify({
           color: "positive",
-          position: "top",
+          position: "top-left",
+          timeout: 80,
           message: this.pageLanguage.loginConfirmMessage,
           icon: "check"
         });
