@@ -3,7 +3,7 @@
     <div style="min-width: 60%;marginbottom:40px">
       <q-form @submit.prevent class="q-gutter-ms q-ma-md">
         <h5 class="q-ma-xl">
-          <q-icon size="md" name="mail" />
+          <q-icon size="ms" name="mail" />
           {{ pageLanguage.contactUs }}
         </h5>
         <q-input
@@ -145,7 +145,8 @@ export default defineComponent({
           .catch(error => {
             this.$q.notify({
               color: "negative",
-              position: "top-left",
+              position: "bottom-left",
+              timeout: 1000,
               message: this.pageLanguage.postError + ": " + error,
               icon: "report_problem"
             });
@@ -153,7 +154,8 @@ export default defineComponent({
       } else {
         this.$q.notify({
           color: "negative",
-          position: "top-left",
+          position: "bottom-left",
+          timeout: 1000,
           message: this.pageLanguage.loginPostErrorMessage,
           icon: "report_problem"
         });

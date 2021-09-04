@@ -137,7 +137,8 @@ export default defineComponent({
       ) {
         this.$q.notify({
           color: "negative",
-          position: "top-left",
+          position: "bottom-left",
+          timeout: 1000,
           message: this.pageLanguage.loggedAccountErrorMessage,
           icon: "report_problem"
         });
@@ -148,7 +149,8 @@ export default defineComponent({
       ) {
         this.$q.notify({
           color: "negative",
-          position: "top-left",
+          position: "bottom-left",
+          timeout: 1000,
           message: this.pageLanguage.loginErrorMessage,
           icon: "report_problem"
         });
@@ -161,8 +163,8 @@ export default defineComponent({
         this.setLoginModal();
         this.$q.notify({
           color: "positive",
-          position: "top-left",
-          timeout: 80,
+          position: "bottom-left",
+          timeout: 1000,
           message: this.pageLanguage.loginConfirmMessage,
           icon: "check"
         });
