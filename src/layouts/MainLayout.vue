@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHr LpR fFf">
-    <MobileNavigation v-if="$q.platform.is.mobile" />
+  <q-layout view="lHr lpR fFf">
+    <MobileNavigation v-if="$q.platform.is.mobile" ref="mobileNav" />
     <LeftBarNavigation />
     <RightBarNavigation v-if="$q.platform.is.desktop" />
     <Footer />
@@ -11,6 +11,18 @@
     >
       <router-view />
     </q-page-container>
+    <q-page-sticky
+      v-if="$q.platform.is.mobile"
+      position="top-right"
+      :offset="[18, 18]"
+    >
+      <q-btn
+        @click="$refs.mobileNav.toggleDrawer()"
+        round
+        color="primary"
+        icon="menu"
+      />
+    </q-page-sticky>
   </q-layout>
   <LoginModal :LoginModal="loginModal" />
 </template>
@@ -42,7 +54,15 @@ export default defineComponent({
     })
   },
   methods: {
-    ...mapActions(["setPageLanguage", "setUser", "resetUser", "setRightDrawer"])
+    ...mapActions([
+      "setPageLanguage",
+      "setUser",
+      "resetUser",
+      "setRightDrawer"
+    ]),
+    toggleDrawer() {
+      this.$refs.MobileNav.toggleDrawer();
+    }
   },
   mounted() {
     if (this.$q.lang.getLocale().includes("en")) {

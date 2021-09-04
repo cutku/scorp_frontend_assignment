@@ -1,9 +1,10 @@
 <template>
-  <q-page class="fixed-center">
-    <div style="min-width: 60%">
-      <q-form @submit.prevent class="q-gutter-md q-pa-md">
+  <q-page class="flex flex-center">
+    <div style="min-width: 60%;marginbottom:40px">
+      <q-form @submit.prevent class="q-gutter-ms q-ma-md">
         <h5 class="q-ma-xl">
-          <q-icon size="md" name="mail" /> {{ pageLanguage.contactUs }}
+          <q-icon size="md" name="mail" />
+          {{ pageLanguage.contactUs }}
         </h5>
         <q-input
           outlined
@@ -21,6 +22,7 @@
           v-model="email"
           :label="pageLanguage.email"
           hint=""
+          type="email"
           lazy-rules
           border
           :rules="[

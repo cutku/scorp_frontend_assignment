@@ -1,7 +1,4 @@
 <template>
-  <q-page-sticky position="top-right" :offset="[18, 18]">
-    <q-btn @click="toggleDrawer" round color="primary" icon="menu" />
-  </q-page-sticky>
   <q-drawer
     v-model="rightDrawerAction"
     show-if-above

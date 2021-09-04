@@ -165,6 +165,9 @@ export default defineComponent({
           message: this.pageLanguage.loginConfirmMessage,
           icon: "check"
         });
+        this.username = "";
+        this.email = "";
+        this.password = "";
       }
     }
   },
